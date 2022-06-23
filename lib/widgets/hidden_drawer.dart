@@ -6,6 +6,8 @@ import 'package:flutter_navi_bar_ex/screens/transactions_screen.dart';
 import 'package:flutter_navi_bar_ex/utils/text_styles.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 
+import '../screens/choose_screen.dart';
+
 class HiddenDrawer extends StatelessWidget {
   const HiddenDrawer({Key? key}) : super(key: key);
 
@@ -120,7 +122,6 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
       print("selectedTile is $selectedTile");
     });
   }
-
 
   @override
   void initState() {
@@ -282,36 +283,39 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
                       Divider(
                         color: Colors.white,
                       ),
-                      // TextButton.icon(
-                      //     icon: Icon(
-                      //       Icons.home,
-                      //       color: Colors.white,
-                      //     ),
-                      //     label: Text("Home",
-                      //         style: AppTextStyles.boldWhiteSmallTextStyle),
-                      //     onPressed: () {
-                      //       _controller.setSelectedMenuPosition(0);
-                      //     }),
-                      // TextButton.icon(
-                      //     icon: Icon(
-                      //       Icons.filter_list_outlined,
-                      //       color: Colors.white,
-                      //     ),
-                      //     label: Text("Transactions",
-                      //         style: AppTextStyles.boldWhiteSmallTextStyle),
-                      //     onPressed: () {
-                      //       _controller.setSelectedMenuPosition(1);
-                      //     }),
-                      // TextButton.icon(
-                      //     icon: Icon(
-                      //       Icons.credit_card,
-                      //       color: Colors.white,
-                      //     ),
-                      //     label: Text("Card Details",
-                      //         style: AppTextStyles.boldWhiteSmallTextStyle),
-                      //     onPressed: () {
-                      //       _controller.setSelectedMenuPosition(2);
-                      //     }),
+                      Spacer(),
+                      Material(
+                        child: ListTile(
+                          key: const ObjectKey(3),
+                          dense: true,
+                          minLeadingWidth: 10,
+                          contentPadding: EdgeInsets.fromLTRB(22, 0, 0, 0),
+                          title: Text(
+                            "Logout",
+                            style: AppTextStyles.mediumBlackkTextStyle,
+                          ),
+                          leading: Icon(
+                            Icons.logout,
+                            color: Colors.black,
+                          ),
+                          onTap: () {
+                            setState(() {
+                              selectTile(3);
+                            });
+
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ChooseScreen()),
+                                (Route<dynamic> route) => false);
+                          },
+                          selectedTileColor: Colors.grey[300],
+                          selected: selectedTile == 3,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
                     ],
                   ),
                 ),

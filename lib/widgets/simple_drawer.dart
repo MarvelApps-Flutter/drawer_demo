@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_navi_bar_ex/color/material_color.dart';
 import 'package:flutter_navi_bar_ex/screens/card_details_screen.dart';
+import 'package:flutter_navi_bar_ex/screens/choose_screen.dart';
 import 'package:flutter_navi_bar_ex/screens/home_screen.dart';
 import 'package:flutter_navi_bar_ex/screens/transactions_screen.dart';
 import 'package:flutter_navi_bar_ex/utils/text_styles.dart';
@@ -9,7 +10,8 @@ class SimpleDrawer extends StatefulWidget {
   final bool? isSimple;
   final bool? isHidden;
   final int? selectedIndex;
-  const SimpleDrawer({Key? key, this.isSimple, this.isHidden, this.selectedIndex})
+  const SimpleDrawer(
+      {Key? key, this.isSimple, this.isHidden, this.selectedIndex})
       : super(key: key);
   @override
   _SimpleDrawerState createState() => _SimpleDrawerState();
@@ -28,16 +30,16 @@ class _SimpleDrawerState extends State<SimpleDrawer> {
   @override
   void initState() {
     super.initState();
-    if(widget.selectedIndex != null)
-      {
-        selectedTile = widget.selectedIndex!;
-      }
+    if (widget.selectedIndex != null) {
+      selectedTile = widget.selectedIndex!;
+    }
   }
+
   @override
   Widget build(BuildContext context) {
     //int _selectedTile = 0;
     return Drawer(
-      child: ListView(
+      child: Column(
         children: <Widget>[
           InkWell(
             child: DrawerHeader(
@@ -94,7 +96,7 @@ class _SimpleDrawerState extends State<SimpleDrawer> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => HomeScreen(
-                          selectedIndex : selectedTile,
+                          selectedIndex: selectedTile,
                           isSimple: widget.isSimple,
                           isHidden: widget.isHidden)));
             },
@@ -127,7 +129,7 @@ class _SimpleDrawerState extends State<SimpleDrawer> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => TransactionsScreen(
-                          selectedIndex : selectedTile,
+                          selectedIndex: selectedTile,
                           isSimple: widget.isSimple,
                           isHidden: widget.isHidden)));
             },
@@ -159,7 +161,7 @@ class _SimpleDrawerState extends State<SimpleDrawer> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => CardDetailsScreen(
-                          selectedIndex : selectedTile,
+                          selectedIndex: selectedTile,
                           isSimple: widget.isSimple,
                           isHidden: widget.isHidden)));
             },
@@ -169,6 +171,37 @@ class _SimpleDrawerState extends State<SimpleDrawer> {
           const Divider(
             color: Colors.white,
           ),
+          Spacer(),
+          ListTile(
+            key: const ObjectKey(3),
+            dense: true,
+            minLeadingWidth: 10,
+            contentPadding: EdgeInsets.fromLTRB(22, 0, 0, 0),
+            title: Text(
+              "Logout",
+              style: AppTextStyles.mediumBlackkTextStyle,
+            ),
+            leading: Icon(
+              Icons.logout,
+              color: Colors.black,
+            ),
+            onTap: () {
+              setState(() {
+                selectTile(3);
+              });
+
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => ChooseScreen()),
+                  (Route<dynamic> route) => false);
+            },
+            selectedTileColor: Colors.grey[300],
+            selected: selectedTile == 3,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+        
         ],
       ),
     );

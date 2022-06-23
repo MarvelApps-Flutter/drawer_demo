@@ -5,6 +5,8 @@ import 'package:flutter_navi_bar_ex/screens/home_screen.dart';
 import 'package:flutter_navi_bar_ex/screens/transactions_screen.dart';
 import 'package:flutter_navi_bar_ex/utils/text_styles.dart';
 
+import '../screens/choose_screen.dart';
+
 class MultilevelDrawer extends StatefulWidget {
   final bool? isSimple;
   final bool? isHidden;
@@ -41,7 +43,7 @@ class _MultilevelDrawerState extends State<MultilevelDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
+      child: Column(
         children: <Widget>[
           InkWell(
             child: DrawerHeader(
@@ -81,6 +83,10 @@ class _MultilevelDrawerState extends State<MultilevelDrawer> {
           Theme(
             data: ThemeData().copyWith(dividerColor: Colors.transparent),
             child: ExpansionTile(
+              leading: Icon(
+              Icons.dashboard,
+              color: Colors.black,
+            ),
               title: isExpandedDashboardTextColor == true ? Text(
                 "Dashboard",
                 style: AppTextStyles.mediumRedTextStyle,
@@ -190,6 +196,10 @@ class _MultilevelDrawerState extends State<MultilevelDrawer> {
           Theme(
             data: ThemeData().copyWith(dividerColor: Colors.transparent),
             child: ExpansionTile(
+              leading: Icon(
+              Icons.settings,
+              color: Colors.black,
+            ),
               title: isExpandedSettingsTextColor == true ? Text(
                 "Settings",
                 style: AppTextStyles.mediumRedTextStyle,
@@ -234,11 +244,6 @@ class _MultilevelDrawerState extends State<MultilevelDrawer> {
                     setState(() {
                       selectTile(4);
                     });
-                    // Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => HomeScreen(
-                    //           isSimple: widget.isSimple, isHidden: widget.isHidden, isMultilevel: widget.isMultilevel,multilevelSelectedIndex: selectedTile,)));
                   },
                 ),
                 ListTile(
@@ -260,12 +265,7 @@ class _MultilevelDrawerState extends State<MultilevelDrawer> {
                     setState(() {
                       selectTile(5);
                     });
-                    // Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => TransactionsScreen(
-                    //           isSimple: widget.isSimple, isHidden: widget.isHidden, isMultilevel: widget.isMultilevel,multilevelSelectedIndex: selectedTile,)));
-                  },
+                   },
                 ),
                 ListTile(
                   dense: true,
@@ -286,16 +286,42 @@ class _MultilevelDrawerState extends State<MultilevelDrawer> {
                     setState(() {
                       selectTile(6);
                     });
-                    // Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => CardDetailsScreen(
-                    //           isSimple: widget.isSimple, isHidden: widget.isHidden, isMultilevel: widget.isMultilevel,multilevelSelectedIndex: selectedTile,)));
-                  },
+                   },
                 ),
               ],
             ),
           ),
+          Spacer(),
+            ListTile(
+            key: const ObjectKey(7),
+            dense: true,
+            minLeadingWidth: 10,
+            contentPadding: EdgeInsets.fromLTRB(22, 0, 0, 0),
+            title: Text(
+              "Logout",
+              style: AppTextStyles.mediumBlackkTextStyle,
+            ),
+            leading: Icon(
+              Icons.logout,
+              color: Colors.black,
+            ),
+            onTap: () {
+              setState(() {
+                selectTile(7);
+              });
+
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => ChooseScreen()),
+                  (Route<dynamic> route) => false);
+            },
+            selectedTileColor: Colors.grey[300],
+            selected: selectedTile == 7,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+        
         ],
       ),
     );

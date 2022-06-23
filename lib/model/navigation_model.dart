@@ -10,5 +10,6 @@ class NavigationModel {
 List<NavigationModel> navigationItems = [
   NavigationModel(title: "Home", icon: Icons.home),
   NavigationModel(title: "Transactions", icon: Icons.filter_list_outlined),
-  NavigationModel(title: "Card Details", icon: Icons.credit_card)
+  NavigationModel(title: "Card Details", icon: Icons.credit_card),
+  
 ];
