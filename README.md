@@ -1,4 +1,4 @@
-# flutter Drawer Demo
+# Flutter Drawer Demo
 
 A new Flutter app demonstarting different types of Drawers. 
 
