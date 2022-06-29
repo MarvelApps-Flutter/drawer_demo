@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_navi_bar_ex/screens/choose_screen.dart';
+import 'package:flutter_navi_bar_ex/screens/splash_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ChooseScreen(),
+      home: const SplashScreen(),
     );
   }
 }
