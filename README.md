@@ -2,6 +2,9 @@
 
 A new Flutter app demonstarting different types of Drawers. 
 
+# Demo
+<img src="https://github.com/MarvelApps-Flutter/drawer_demo/blob/dev/screenshots/gif/demo.gif" height="480px"></td>
+
 # Android Screenshots
 
 <table>
